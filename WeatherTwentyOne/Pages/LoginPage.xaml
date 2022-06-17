@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherTwentyOne.Pages.LoginPage"
+             xmlns:handlers="clr-namespace:WeatherTwentyOne.Handler"
+             Title="Login Demo">
+
+    <VerticalStackLayout 
+        Spacing="25" Padding="30" VerticalOptions="Center">
+
+        <Image Source="dotnet_bot.svg" WidthRequest="150" HeightRequest="150" />
+
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Welcome" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center" />
+            <Label Text="Login to your account" FontSize="18" TextColor="Red" HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
+            </Frame>
+            <Frame HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand"
+                   HeightRequest="45" Margin="-20,0,0,0" Padding="20,0,0,0">
+                <handlers:BorderlessEntry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="User name" Keyboard="Text" x:Name="txtUserName" />
+            </Frame>
+            <Label></Label>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
+            </Frame>
+            <Frame HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand"
+                   HeightRequest="45" Margin="-20,0,0,0" Padding="20,0,0,0">
+                <handlers:BorderlessEntry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="password" Keyboard="Text" IsPassword="True" x:Name="txtPassword" />
+            </Frame>
+        </StackLayout>
+
+        <Button Text="Sign in" CornerRadius="10" FontSize="15" x:Name="btnLogin" Clicked="btnLogin_Clicked" />
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text="Don't have account?" TextColor="Gray"></Label>
+            <Label Text="Sign up here" TextColor="#50b3f2"></Label>
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
