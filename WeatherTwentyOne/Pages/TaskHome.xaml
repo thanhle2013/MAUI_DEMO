@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:WeatherTwentyOne.ViewModel"
+             x:Class="WeatherTwentyOne.Pages.TaskHome"
+             x:DataType="viewmodel:TaskHomeViewModel"
+             Title="Todo Task">
+
+    <Grid RowDefinitions="100, auto, *" ColumnDefinitions="0.75*, 0.25*" Margin="20">
+        <Image Source="dotnet_bot.svg" WidthRequest="100" HeightRequest="100" Grid.Row="0" Grid.ColumnSpan="2"  />
+
+
+        <Frame HasShadow="True" BorderColor="WhiteSmoke" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"
+                   HeightRequest="45" Padding="20,0,0,0" Margin="5">
+            <Entry Text="{Binding Text}"  BackgroundColor="WhiteSmoke" 
+               Placeholder="Enter text" ReturnType="Done" ReturnCommand="{Binding AddCommand}"></Entry>
+        </Frame>
+       
+        
+        <Button Command="{Binding AddCommand}" Text="Add Task" Grid.Row="1" Grid.Column="1"></Button>
+        
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Items}" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type x:String}">
+                    <SwipeView>
+                       
+                        <Grid Padding="0,5">
+                            <Frame Padding="0.5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                    CommandParameter="{Binding .}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TaskHomeViewModel}}, Path=DetailCommand}"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <Label Text="{Binding .}" FontSize="24"/>
+                            </Frame>
+                        </Grid>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                              
+                                <SwipeItem Text="Delete" BackgroundColor="Red"
+                                    CommandParameter="{Binding .}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TaskHomeViewModel}}, Path=DeleteCommand}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

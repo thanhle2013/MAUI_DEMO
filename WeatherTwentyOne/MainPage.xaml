@@ -25,6 +25,14 @@
                 SemanticProperties.Hint="Open Caculator Page"
                 Clicked="btnCaculator_Clicked"
                 HorizontalOptions="Center" />
+
+            <Button 
+                Grid.Row="0" Grid.Column="2"
+                x:Name="btnTask"
+                Text="TodoTask"
+                SemanticProperties.Hint="Open TodoTask Page"
+                Clicked="btnTask_Clicked"
+                HorizontalOptions="Center" />
         </Grid>
         
     </ScrollView>
